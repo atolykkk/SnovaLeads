@@ -2147,3 +2147,76 @@ body.quiz-lock {
     align-items: flex-start;
   }
 }
+
+
+/* === v15: fixed horizontal scroll + Telegram link === */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+main,
+section,
+header,
+footer,
+.container,
+.header,
+.hero,
+.hero__grid,
+.hero__content,
+.hero__visual,
+.quiz-modal,
+.quiz-modal__dialog {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero__grid,
+  .hero__content,
+  .hero__visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .stat-card {
+    max-width: calc(100vw - 32px);
+  }
+
+  .review-grid--compact {
+    max-width: 100%;
+    margin-right: 0 !important;
+    padding-right: 24px;
+  }
+
+  .reviews-side {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 560px) {
+  .header__inner {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .header__actions {
+    max-width: 100%;
+  }
+
+  .header__actions .btn--small {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
