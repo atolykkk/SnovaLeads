@@ -150,3 +150,11 @@
 - Telegram открывается в новой вкладке.
 - Исправлен горизонтальный скролл на iPhone/Safari через ограничения overflow/max-width.
 - MAX оставлен временной заглушкой.
+
+
+## v16 правки
+- Сайт больше не отправляет заявки напрямую в Telegram API.
+- Отправка идет через Cloudflare Worker:
+  `https://snovaleads-form.antontatisev.workers.dev/`
+- Это должно решить проблему отправки заявок без VPN.
+- Telegram Bot Token больше не хранится в коде сайта.

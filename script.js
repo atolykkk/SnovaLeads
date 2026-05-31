@@ -146,8 +146,7 @@ if (reviewsSlider) {
 
 
 /* === v11: Telegram form direct integration === */
-const TELEGRAM_BOT_TOKEN = "8852374682:AAGOQ8JzP7H_2SpZ1TJd4eFA0RwzwovxWo8";
-const TELEGRAM_CHAT_IDS = ["411788851", "8753079307"];
+const WORKER_ENDPOINT = "https://snovaleads-form.antontatisev.workers.dev/";
 
 function escapeHtml(value) {
   return String(value || "")
@@ -184,30 +183,22 @@ function formatLeadMessage(data) {
 }
 
 async function sendLeadToTelegram(message) {
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-
-  const requests = TELEGRAM_CHAT_IDS.map((chatId) => {
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-        parse_mode: "HTML",
-        disable_web_page_preview: true
-      })
-    }).then(async (response) => {
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Telegram error for chat ${chatId}: ${errorText}`);
-      }
-      return response.json();
-    });
+  const response = await fetch(WORKER_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message
+    })
   });
 
-  return Promise.all(requests);
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Worker error: ${errorText}`);
+  }
+
+  return response.json();
 }
 
 /* Replace old form listener by cloning form */
