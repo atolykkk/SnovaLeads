@@ -158,3 +158,17 @@
   `https://snovaleads-form.antontatisev.workers.dev/`
 - Это должно решить проблему отправки заявок без VPN.
 - Telegram Bot Token больше не хранится в коде сайта.
+
+
+## v17 правки
+- Добавлены favicon-файлы:
+  - `favicon.ico`
+  - `favicon-16x16.png`
+  - `favicon-32x32.png`
+  - `apple-touch-icon.png`
+  - `android-chrome-192x192.png`
+  - `android-chrome-512x512.png`
+- Добавлена Open Graph картинка:
+  - `og-image.jpg`
+- В `index.html` прописаны SEO title/description, favicon-теги, Open Graph и Twitter Card.
+- Превью ссылки настроено под домен `https://snovaleads.pro/`.
