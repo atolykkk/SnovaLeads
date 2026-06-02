@@ -279,6 +279,17 @@ function reachGoal(goalName, params = {}) {
   }
 }
 
+function vkGoal(goalName) {
+  if (window._tmr) {
+    _tmr.push({
+      id: "3770649",
+      type: "reachGoal",
+      goal: goalName
+    });
+  }
+}
+
+
 /* Click goals */
 document.querySelectorAll(".js-consult-click, .js-quiz-placeholder").forEach((element) => {
   element.addEventListener("click", () => {
@@ -305,6 +316,7 @@ if (typeof sendLeadToTelegram === "function") {
   const patchedSendLeadToTelegram = async function(message) {
     const result = await originalSendLeadToTelegram(message);
     reachGoal("lead_form");
+    vkGoal("lead_form");
     return result;
   };
 
@@ -526,6 +538,7 @@ quizForm?.addEventListener("submit", async (event) => {
     updateQuiz();
 
     reachGoal("quiz_success");
+    vkGoal("quiz_success");
   } catch (error) {
     console.error(error);
     showToast("Не удалось отправить заявку. Попробуйте написать в Telegram.");

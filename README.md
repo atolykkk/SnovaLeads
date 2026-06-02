@@ -172,3 +172,11 @@
   - `og-image.jpg`
 - В `index.html` прописаны SEO title/description, favicon-теги, Open Graph и Twitter Card.
 - Превью ссылки настроено под домен `https://snovaleads.pro/`.
+
+
+## VK / MAX patch
+- Добавлен Top.Mail.Ru / VK Ads пиксель `3770649`.
+- Добавлены события VK:
+  - `quiz_success`
+  - `lead_form`
+- Ссылки MAX в шапке и подвале открываются в новой вкладке.
